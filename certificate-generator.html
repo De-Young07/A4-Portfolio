@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Certificate Generator — TradeFlow NG × DSN AI+</title>
+<title>Certificate Generator — DSN FUTMinna × DSN FUTO</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image-more/2.8.0/dom-to-image-more.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:#F5F2EB;color:#1C1C1C;min-height:100vh;-webkit-font-smoothing:antialiased;}
 header{background:#0D1F14;padding:1.3rem 2rem;display:flex;align-items:center;gap:.75rem;}
-.hmark{width:36px;height:36px;background:#1A6B3C;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.hmark{width:36px;height:36px;background:#1A6B3C;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;color:#fff;}
 .hname{font-size:1rem;font-weight:700;color:#fff;}
 .hsep{width:1px;height:22px;background:rgba(255,255,255,.15);margin:0 .3rem;}
 .hdsn{font-size:.82rem;font-weight:600;color:rgba(255,255,255,.45);}
@@ -33,7 +33,7 @@ input::placeholder{color:#B5BDB9;}
 .est{text-align:center;color:#6B7A70;font-size:.86rem;line-height:1.65;}
 .est .ei{font-size:2.2rem;display:block;margin-bottom:.5rem;}
 
-/* ── CERTIFICATE: zero CSS vars, all hex ── */
+/* ── CERTIFICATE STYLES ── */
 #cert{
   width:700px;
   background:#ffffff;
@@ -44,84 +44,64 @@ input::placeholder{color:#B5BDB9;}
 }
 #cert.show{display:block;}
 
-/* outer gold frame */
 .cf{position:absolute;inset:10px;border:1.5px solid #B8952A;pointer-events:none;z-index:2;}
 .cfi{position:absolute;inset:15px;border:.5px solid rgba(184,149,42,.3);pointer-events:none;z-index:2;}
-
-/* left accent bar */
 .cbar{position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,#C8860A 0%,#1A6B3C 50%,#C8860A 100%);}
-
-/* bottom strip */
 .cstrip{position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#C8860A,#1A6B3C,#C8860A);}
-
-/* content */
 .cc{padding:2.5rem 3.2rem 2.5rem 3.8rem;position:relative;z-index:1;}
 
-/* top row */
 .ctop{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.8rem;}
-.clogos{display:flex;align-items:center;gap:.9rem;}
-.ctf{display:flex;align-items:center;gap:.45rem;}
-.ctfmark{width:30px;height:30px;background:#1A6B3C;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.95rem;}
-.ctfname{font-family:'Plus Jakarta Sans',sans-serif;font-size:.88rem;font-weight:700;color:#1A6B3C;line-height:1.2;}
-.ctfname small{color:#6B7A70;font-weight:500;font-size:.78rem;}
-.csep{width:1px;height:30px;background:rgba(0,0,0,.1);}
-.cdsn{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;font-weight:700;color:#6B7A70;line-height:1.3;}
-.cdsn strong{color:#1C1C1C;display:block;font-size:.82rem;}
+.clogos{display:flex;align-items:center;gap:1.5rem;}
+.clogos img{height:45px; width:auto; object-fit:contain;}
+.csep{width:1px;height:35px;background:rgba(0,0,0,.15);}
 .cidbox{text-align:right;}
 .cidlbl{font-family:'Plus Jakarta Sans',sans-serif;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6B7A70;margin-bottom:.15rem;}
 .cidval{font-family:'DM Mono',monospace;font-size:.8rem;font-weight:500;color:#1A6B3C;letter-spacing:.04em;}
 
-/* main title */
 .cof{font-family:'Plus Jakarta Sans',sans-serif;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:#6B7A70;text-align:center;margin-bottom:.3rem;}
 .ctitle{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:700;color:#1A6B3C;text-align:center;line-height:1.1;letter-spacing:-.01em;margin-bottom:1.4rem;}
 
-/* divider */
 .cdiv{display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;}
 .cdivbar{flex:1;height:1px;background:linear-gradient(90deg,transparent,#B8952A,transparent);}
 .cdivdot{width:7px;height:7px;background:#B8952A;transform:rotate(45deg);flex-shrink:0;}
 
-/* body */
 .cbody{font-family:'Cormorant Garamond',serif;font-size:1rem;color:#444444;text-align:center;line-height:1.75;margin-bottom:.5rem;}
 .cname{font-family:'Cormorant Garamond',serif;font-size:2.3rem;font-weight:600;font-style:italic;color:#0D1F14;text-align:center;letter-spacing:.01em;margin:.55rem 0;line-height:1.2;border-bottom:1.5px solid rgba(184,149,42,.4);padding-bottom:.55rem;}
 .cbody2{font-family:'Cormorant Garamond',serif;font-size:.92rem;color:#555555;text-align:center;line-height:1.7;margin-top:.55rem;margin-bottom:1.5rem;}
 .cbody2 em{font-style:normal;font-weight:600;color:#1A6B3C;}
 
-/* programme badge */
 .cprog{display:flex;justify-content:center;margin-bottom:1.8rem;}
 .cpill{background:#F5EDD4;border:1px solid rgba(184,149,42,.35);border-radius:100px;padding:.38rem 1.1rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.68rem;font-weight:700;color:#C8860A;text-transform:uppercase;letter-spacing:.07em;display:flex;align-items:center;gap:.45rem;}
 .cpilldot{width:5px;height:5px;background:#C8860A;border-radius:50%;}
 
-/* signatures */
 .cfoot{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;align-items:end;}
 .csig{text-align:center;}
 .csigline{height:1px;background:rgba(0,0,0,.18);margin-bottom:.38rem;}
 .csigname{font-family:'Plus Jakarta Sans',sans-serif;font-size:.7rem;font-weight:700;color:#1C1C1C;}
 .csigrole{font-family:'Plus Jakarta Sans',sans-serif;font-size:.6rem;color:#6B7A70;margin-top:.08rem;}
 .cseal{text-align:center;}
-.csealc{width:52px;height:52px;border-radius:50%;border:2px solid #B8952A;display:flex;align-items:center;justify-content:center;margin:0 auto .38rem;background:#F5EDD4;font-size:1.3rem;}
+.csealc{width:52px;height:52px;border-radius:50%;border:2px solid #B8952A;display:flex;align-items:center;justify-content:center;margin:0 auto .38rem;background:#F5EDD4;color:#B8952A;font-size:1.3rem;}
 </style>
 </head>
 <body>
 <header>
-  <div class="hmark">🌾</div>
-  <span class="hname">TradeFlow NG</span>
+  <div class="hmark">DSN</div>
+  <span class="hname">DSN FUTMinna</span>
   <div class="hsep"></div>
-  <span class="hdsn">DSN AI+ Cohort</span>
+  <span class="hdsn">DSN FUTO Cohort</span>
   <span class="hbadge">Certificate Generator</span>
 </header>
 <main>
-  <!-- FORM -->
   <div>
     <div class="plbl">Participant Details</div>
     <div class="fg"><label>Full Name *</label><input type="text" id="fn" placeholder="e.g. Adaeze Okonkwo" maxlength="60"></div>
-    <div class="fg"><label>DSN AI+ ID *</label><input type="text" id="fi" placeholder="e.g. DSN-AI-2026-0042" maxlength="30"><p class="hint">Used as the certificate reference number.</p></div>
+    <div class="fg"><label>Participant ID *</label><input type="text" id="fi" placeholder="e.g. DSN-2026-0042" maxlength="30"><p class="hint">Used as the certificate reference number.</p></div>
     <div class="fg"><label>Cohort Name</label><input type="text" id="fc" placeholder="e.g. Cohort 1 — May 2026" maxlength="50"></div>
     <div class="fg"><label>Completion Date</label><input type="date" id="fd"></div>
     <button class="bgen" onclick="gen()">Generate Certificate →</button>
     <button class="bdl" id="bdl" onclick="dl()">⬇ Download PNG</button>
   </div>
 
-  <!-- PREVIEW -->
   <div>
     <div class="plbl">Preview</div>
     <div class="pscroll">
@@ -134,15 +114,11 @@ input::placeholder{color:#B5BDB9;}
         <div class="cfi"></div>
 
         <div class="cc">
-          <!-- Logos -->
           <div class="ctop">
             <div class="clogos">
-              <div class="ctf">
-                <div class="ctfmark">🌾</div>
-                <div class="ctfname">TradeFlow <small>NG</small></div>
-              </div>
+              <img src="545619.jpg" alt="DSN FUTMinna">
               <div class="csep"></div>
-              <div class="cdsn"><strong>DSN AI+</strong>Data Scientists Network</div>
+              <img src="545619.jpg" alt="DSN FUTO">
             </div>
             <div class="cidbox">
               <div class="cidlbl">Certificate Ref.</div>
@@ -150,7 +126,6 @@ input::placeholder{color:#B5BDB9;}
             </div>
           </div>
 
-          <!-- Title -->
           <div class="cof">This is to certify that</div>
           <div class="ctitle">Certificate of Completion</div>
 
@@ -164,33 +139,32 @@ input::placeholder{color:#B5BDB9;}
           <div class="cname" id="oname">Participant Name</div>
           <div class="cbody2">
             for successfully completing the
-            <em id="ocohort">DSN AI+ 3-Month Cohort</em>,<br>
-            delivered in collaboration with <em>TradeFlow NG</em>,<br>
-            demonstrating commitment to applied data science and agricultural intelligence.
+            <em id="ocohort">DSN 3-Month Cohort</em>,<br>
+            delivered in collaboration by <em>DSN FUTMinna</em> and <em>DSN FUTO</em>,<br>
+            demonstrating commitment to applied data science and artificial intelligence.
           </div>
 
           <div class="cprog">
             <div class="cpill">
               <div class="cpilldot"></div>
-              <span id="oprog">DSN AI+ Programme · 3-Month Intensive</span>
+              <span id="oprog">DSN Programme · 3-Month Intensive</span>
             </div>
           </div>
 
-          <!-- Signatures -->
           <div class="cfoot">
             <div class="csig">
               <div class="csigline"></div>
-              <div class="csigname">Quadri Adebisi</div>
-              <div class="csigrole">Co-Founder & CEO, TradeFlow NG</div>
+              <div class="csigname">DSN FUTMinna Lead</div>
+              <div class="csigrole">President, DSN FUTMinna</div>
             </div>
             <div class="cseal">
-              <div class="csealc">🌾</div>
+              <div class="csealc">★</div>
               <div class="csigrole" id="odate" style="font-size:.62rem;color:#6B7A70;text-align:center;">—</div>
             </div>
             <div class="csig">
               <div class="csigline"></div>
-              <div class="csigname">DSN AI+</div>
-              <div class="csigrole">Data Scientists Network Nigeria</div>
+              <div class="csigname">DSN FUTO Lead</div>
+              <div class="csigrole">President, DSN FUTO</div>
             </div>
           </div>
         </div>
@@ -205,9 +179,10 @@ document.getElementById('fd').value = new Date().toISOString().split('T')[0];
 function gen(){
   const name   = document.getElementById('fn').value.trim();
   const id     = document.getElementById('fi').value.trim();
-  const cohort = document.getElementById('fc').value.trim() || 'DSN AI+ 3-Month Cohort';
+  const cohort = document.getElementById('fc').value.trim() || 'DSN 3-Month Cohort';
   const dt     = document.getElementById('fd').value;
-  if(!name||!id){alert('Please fill in Full Name and DSN AI+ ID.');return;}
+  if(!name||!id){alert('Please fill in Full Name and Participant ID.');return;}
+  
   document.getElementById('oname').textContent   = name;
   document.getElementById('oid').textContent     = id;
   document.getElementById('ocohort').textContent = cohort;
@@ -215,6 +190,7 @@ function gen(){
   document.getElementById('odate').textContent   = dt
     ? new Date(dt+'T00:00:00').toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'})
     : '';
+  
   document.getElementById('est').style.display = 'none';
   document.getElementById('cert').classList.add('show');
   document.getElementById('bdl').style.display = 'block';
@@ -225,25 +201,33 @@ function dl(){
   const name = document.getElementById('fn').value.trim() || 'cert';
   const id   = document.getElementById('fi').value.trim() || 'ref';
   const btn  = document.getElementById('bdl');
-  btn.textContent = 'Generating…'; btn.disabled = true;
+  
+  btn.textContent = 'Generating…'; 
+  btn.disabled = true;
 
-  domtoimage.toPng(el,{
-    quality: 1,
-    bgcolor: '#ffffff',
-    width:   el.offsetWidth,
-    height:  el.offsetHeight
+  // Swapped to html2canvas for better font and image handling
+  html2canvas(el, {
+    scale: 3, // High resolution
+    useCORS: true, // Allows loading local images like 545619.jpg
+    backgroundColor: '#ffffff'
   })
-  .then(url => {
+  .then(canvas => {
+    const url = canvas.toDataURL('image/png');
     const a = document.createElement('a');
-    a.href     = url;
-    a.download = 'TFN_Cert_'+id+'_'+name.replace(/\s+/g,'-')+'.png';
-    document.body.appendChild(a); a.click(); document.body.removeChild(a);
-    btn.textContent = '⬇ Download PNG'; btn.disabled = false;
+    a.href = url;
+    a.download = 'DSN_Cert_' + id + '_' + name.replace(/\s+/g,'-') + '.png';
+    document.body.appendChild(a); 
+    a.click(); 
+    document.body.removeChild(a);
+    
+    btn.textContent = '⬇ Download PNG'; 
+    btn.disabled = false;
   })
   .catch(e => {
     console.error(e);
-    alert('Download failed. Please use Chrome or Edge.');
-    btn.textContent = '⬇ Download PNG'; btn.disabled = false;
+    alert('Download failed. Please check the console for errors.');
+    btn.textContent = '⬇ Download PNG'; 
+    btn.disabled = false;
   });
 }
 
