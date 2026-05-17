@@ -116,9 +116,9 @@ input::placeholder{color:#B5BDB9;}
         <div class="cc">
           <div class="ctop">
             <div class="clogos">
-              <img src="DS logo.jpg" alt="DSN FUTMinna">
+              <img src="545619.jpg" alt="DSN FUTMinna" crossorigin="anonymous">
               <div class="csep"></div>
-              <img src="DS futo.png" alt="DSN FUTO">
+              <img src="futo-logo.jpg" alt="DSN FUTO" crossorigin="anonymous">
             </div>
             <div class="cidbox">
               <div class="cidlbl">Certificate Ref.</div>
@@ -205,30 +205,33 @@ function dl(){
   btn.textContent = 'Generating…'; 
   btn.disabled = true;
 
-  // Swapped to html2canvas for better font and image handling
-  html2canvas(el, {
-    scale: 3, // High resolution
-    useCORS: true, // Allows loading local images like 545619.jpg
-    backgroundColor: '#ffffff'
-  })
-  .then(canvas => {
-    const url = canvas.toDataURL('image/png');
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'DSN_Cert_' + id + '_' + name.replace(/\s+/g,'-') + '.png';
-    document.body.appendChild(a); 
-    a.click(); 
-    document.body.removeChild(a);
-    
-    btn.textContent = '⬇ Download PNG'; 
-    btn.disabled = false;
-  })
-  .catch(e => {
-    console.error(e);
-    alert('Download failed. Please check the console for errors.');
-    btn.textContent = '⬇ Download PNG'; 
-    btn.disabled = false;
-  });
+  // Added a slight delay to ensure the browser has fully rendered the images and fonts
+  setTimeout(() => {
+    html2canvas(el, {
+      scale: 2, // Lowered from 3 to 2 to prevent memory limits on mobile devices
+      useCORS: true, 
+      allowTaint: false,
+      backgroundColor: '#ffffff'
+    })
+    .then(canvas => {
+      const url = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'DSN_Cert_' + id + '_' + name.replace(/\s+/g,'-') + '.png';
+      document.body.appendChild(a); 
+      a.click(); 
+      document.body.removeChild(a);
+      
+      btn.textContent = '⬇ Download PNG'; 
+      btn.disabled = false;
+    })
+    .catch(e => {
+      console.error(e);
+      alert('Download failed. Please check the console for errors.');
+      btn.textContent = '⬇ Download PNG'; 
+      btn.disabled = false;
+    });
+  }, 500);
 }
 
 document.querySelectorAll('input').forEach(el=>{
