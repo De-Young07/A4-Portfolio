@@ -281,6 +281,13 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
   .footer-inner{flex-direction:column;align-items:flex-start;}
   .fp-top,.fp-arch{padding-left:1.4rem;padding-right:1.4rem;}
 }
+
+.type-tag{display:inline-block;font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:3px;margin-bottom:0.6rem;font-weight:500;}
+.type-tag.tech{color:var(--teal);background:rgba(0,110,127,0.08);border:1px solid rgba(0,110,127,0.25);}
+.type-tag.research{color:#8a5d0c;background:rgba(200,146,42,0.14);border:1px solid rgba(200,146,42,0.45);}
+.featured-project .type-tag.tech{color:var(--teal-light);background:rgba(0,180,207,0.1);border-color:rgba(0,180,207,0.35);}
+.research-card{border-top:3px solid var(--gold);}
+.type-legend{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin:-1.5rem 0 2rem;font-size:0.8rem;color:var(--gray);}
 </style>
 </head>
 <body>
@@ -363,7 +370,7 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
         I came into data science with a single question: why does so much perishable food move across Nigeria and rot before it reaches people who need it? I built what I thought was a solution. Then I hit the walls that matter — <em>the market doesn't behave the way you modelled, traders don't trust an app built by someone who's never traded, and the data you assumed existed simply doesn't.</em>
       </p>
       <p>
-        That failure became <strong>TradeFlow NG</strong> — a fully deployed agricultural trade optimization platform now active across 8 Nigerian states. Not rebuilt from scratch. Rebuilt from experience.
+        That failure became <strong>TradeFlow NG</strong> — a fully deployed agricultural trade optimization platform designed for 8 Nigerian states and now entering pilot as field agents are onboarded. Not rebuilt from scratch. Rebuilt from experience.
       </p>
       <p>
         I serve as Director of Research at ASSN FUTMinna and Tech Lead at DSN FUTMinna. Through my consulting practice, <strong>A4 Analytics</strong>, I build bespoke systems for businesses — pharmacies, distributors, and organisations that need production-grade tools without enterprise budgets. In June 2026, my team placed 1st at the HealthTrace Hackathon — a disease surveillance system built in three days. Every project starts with the same question: <strong>what does the person at the end of this system actually need?</strong> Not what's technically impressive. What solves the problem.
@@ -376,12 +383,12 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
         </div>
         <div class="about-photo-caption">
           <div class="apc-item">
-            <div class="apc-val">13<span>+</span></div>
+            <div class="apc-val">14<span>+</span></div>
             <div class="apc-label">Systems Built</div>
           </div>
           <div class="apc-item">
             <div class="apc-val">8</div>
-            <div class="apc-label">States Covered</div>
+            <div class="apc-label">States in Design</div>
           </div>
           <div class="apc-item">
             <div class="apc-val">52</div>
@@ -403,13 +410,13 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
           </div>
           <div class="timeline-item">
             <div class="tl-year">2026</div>
-            <div class="tl-title">MongoDB Certified · MLOps Specialisation</div>
+            <div class="tl-title">MongoDB Certified · MLOps (in progress)</div>
             <div class="tl-org">Coursera · Database Management &amp; MLOps pipelines</div>
           </div>
           <div class="timeline-item">
             <div class="tl-year">2024</div>
             <div class="tl-title">Founder — TradeFlow NG</div>
-            <div class="tl-org">Agricultural trade optimizer · Live across 8 Nigerian states</div>
+            <div class="tl-org">Agricultural trade optimizer · Built for 8 Nigerian states · pilot stage</div>
           </div>
           <div class="timeline-item">
             <div class="tl-year">2024</div>
@@ -441,7 +448,7 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
     </div>
     <div class="impact-item">
       <div class="impact-num">8</div>
-      <div class="impact-label">Nigerian States Covered</div>
+      <div class="impact-label">Target States (Pilot)</div>
     </div>
     <div class="impact-item">
       <div class="impact-num">4.30</div>
@@ -466,6 +473,7 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
   <div class="featured-project fade-up">
     <div class="fp-top">
       <div class="fp-badge" style="color:var(--teal-light);border-color:rgba(0,180,207,0.3);background:rgba(0,180,207,0.08);">✦ Recent Build · June 2026</div>
+      <span class="type-tag tech">Technical Project</span>
       <div class="fp-name">Lafiya — Low-Connectivity Disease Surveillance Backend</div>
       <p class="fp-desc">
         Contact-tracing systems assume constant internet connectivity — an assumption that fails across much of Nigeria, where field devices regularly lose signal for hours or days. Built in 3 days with a 3-person team, I owned the <strong>backend and data engineering layer</strong>: the IngestService (schema validation, MAC-address privacy hashing, deduplication) and the RelayService (encrypted store-and-forward sync through intermediary relay phones, server-only decryption), so surveillance data reaches the intelligence pipeline whether the source device is online or offline — and relay phones never see the health payloads they carry. The SQLite-based storage layer I built feeds five downstream intelligence engines: exposure risk scoring, vitals anomaly detection, contact network mapping, outbreak zone clustering, and device health monitoring.
@@ -481,13 +489,15 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
     </div>
   </div>
 
+  <div class="type-legend"><span class="type-tag tech" style="margin:0">Technical Project</span> deployed systems &amp; tools &nbsp;·&nbsp; research studies are tagged <span class="type-tag research" style="margin:0">Research</span> in the <a href="#research" style="color:var(--teal)">Research section</a></div>
   <div class="projects-grid fade-up">
     <a class="project-row" href="https://github.com/De-Young07" target="_blank">
       <div class="proj-num">02</div>
       <div class="proj-main">
+        <span class="type-tag tech">Technical Project</span>
         <div class="proj-sector"><div class="sector-dot"></div>Agricultural Tech · FinTech</div>
         <div class="proj-name">TradeFlow NG</div>
-        <div class="proj-desc">Nigeria loses ~40% of perishable produce annually to supply chain inefficiency. TradeFlow collects real-time commodity prices from field agents across 8 states, forecasts price trends using ARIMA, and runs a linear programming optimizer to tell traders exactly what to buy, where to source, and where to sell — before committing a single naira.</div>
+        <div class="proj-desc">Nigeria loses ~40% of perishable produce annually to supply chain inefficiency. TradeFlow is built to collect weekly commodity prices from field agents across 8 states, forecast price trends using ARIMA, and runs a linear programming optimizer to tell traders exactly what to buy, where to source, and where to sell — before committing a single naira.</div>
         <div class="proj-tags">
           <div class="proj-tag">Python</div><div class="proj-tag">ARIMA</div><div class="proj-tag">Linear Programming</div>
           <div class="proj-tag">PostgreSQL</div><div class="proj-tag">Streamlit</div>
@@ -495,13 +505,14 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
       </div>
       <div class="proj-outcome">
         <div class="proj-outcome-label">Live Impact</div>
-        <div class="proj-outcome-val">Production deployed · 8 states · Cloud DB</div>
+        <div class="proj-outcome-val">Platform deployed · 8-state design · Cloud DB · Pilot stage</div>
       </div>
       <div class="proj-arrow">↗</div>
     </a>
     <a class="project-row" href="https://github.com/De-Young07" target="_blank">
       <div class="proj-num">03</div>
       <div class="proj-main">
+        <span class="type-tag tech">Technical Project</span>
         <div class="proj-sector"><div class="sector-dot"></div>Civic Technology · Government</div>
         <div class="proj-name">CivicVoice</div>
         <div class="proj-desc">A WhatsApp-based AI platform that accepts text and image reports of broken infrastructure, classifies issues using NLP and computer vision, automatically routes them to the correct government department, and tracks resolution status in real time. Zero app downloads, zero forms.</div>
@@ -519,6 +530,7 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
     <a class="project-row" href="https://github.com/De-Young07" target="_blank">
       <div class="proj-num">04</div>
       <div class="proj-main">
+        <span class="type-tag tech">Technical Project</span>
         <div class="proj-sector"><div class="sector-dot"></div>Clinical AI · Healthcare</div>
         <div class="proj-name">Alzheimer's Prediction Pipeline</div>
         <div class="proj-desc">An EfficientNet transfer learning model on 6,000+ annotated MRI scans for early-stage Alzheimer's classification. Reported clinical metrics: sensitivity, specificity, and ROC-AUC — not just accuracy. Built for integration into clinical workflows in low-resource settings without specialist radiologists.</div>
@@ -536,6 +548,7 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
     <a class="project-row" href="https://github.com/De-Young07" target="_blank">
       <div class="proj-num">05</div>
       <div class="proj-main">
+        <span class="type-tag tech">Technical Project</span>
         <div class="proj-sector"><div class="sector-dot"></div>Financial Analytics · Retention</div>
         <div class="proj-name">Customer Churn Prediction System</div>
         <div class="proj-desc">An ensemble classifier trained on 10,000+ records with SMOTE to handle class imbalance, scoring every customer by churn risk tier. Live Streamlit dashboard lets business teams query, explore cohorts, and simulate retention interventions before committing budget.</div>
@@ -553,8 +566,9 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
     <a class="project-row" href="https://github.com/De-Young07" target="_blank">
       <div class="proj-num">06</div>
       <div class="proj-main">
+        <span class="type-tag tech">Technical Project</span>
         <div class="proj-sector"><div class="sector-dot"></div>EdTech · University Systems</div>
-        <div class="proj-name">Acadlytics — Student Intelligence Platform</div>
+        <div class="proj-name">Scholaris (formerly Acadlytics) — Student Intelligence Platform</div>
         <div class="proj-desc">Ingests continuous student performance data and flags at-risk students mid-semester, surfacing actionable dashboards for lecturers and administrators — proactive intervention instead of post-failure review.</div>
         <div class="proj-tags">
           <div class="proj-tag">Python</div><div class="proj-tag">Predictive Modeling</div>
@@ -570,6 +584,7 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
     <a class="project-row" href="https://github.com/De-Young07" target="_blank">
       <div class="proj-num">07</div>
       <div class="proj-main">
+        <span class="type-tag tech">Technical Project</span>
         <div class="proj-sector"><div class="sector-dot"></div>Public Health · Community Tools</div>
         <div class="proj-name">Children Nutrition Classifier</div>
         <div class="proj-desc">A lightweight, field-deployable Streamlit app that classifies children's nutritional status — normal, stunted, wasted, underweight — from standard clinical inputs. Built for non-technical field workers in MNCH settings, no internet required for local deployments.</div>
@@ -587,6 +602,7 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
     <a class="project-row" href="https://github.com/De-Young07" target="_blank">
       <div class="proj-num">08</div>
       <div class="proj-main">
+        <span class="type-tag tech">Technical Project</span>
         <div class="proj-sector"><div class="sector-dot"></div>HealthTech · Business Operations · Full-Stack</div>
         <div class="proj-name">Keji Pharmacy — Point-of-Sale &amp; Management System</div>
         <div class="proj-desc">A complete pharmacy management system commissioned through A4 Analytics for Keji Pharmacy. Covers the full store operation: in-store sales with 4-tier pricing, real-time inventory with FEFO batch tracking, customer debt ledger, staff performance analytics, and a mobile CEO dashboard — accessible from anywhere in the world. Runs fully offline on the store's local machine; a background sync worker pushes data to the cloud every 60 seconds so the owner monitors everything live from her phone.</div>
@@ -599,6 +615,25 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
       <div class="proj-outcome">
         <div class="proj-outcome-label">Delivered</div>
         <div class="proj-outcome-val">Live in store · Dual-database offline-first · Remote CEO dashboard · Full DevOps + layman setup guide</div>
+      </div>
+      <div class="proj-arrow">↗</div>
+    </a>
+    <a class="project-row" href="https://github.com/De-Young07" target="_blank">
+      <div class="proj-num">09</div>
+      <div class="proj-main">
+        <span class="type-tag tech">Technical Project</span>
+        <div class="proj-sector"><div class="sector-dot"></div>Research Management · Agricultural Mechanization · AI Tools</div>
+        <div class="proj-name">NCAM Research Intelligence Platform</div>
+        <div class="proj-desc">Research output at a national institute is scattered across files and officers. Built during my SIWES placement at the National Centre for Agricultural Mechanization (NCAM), Ilorin: a full-stack platform that centralises research monitoring. Officers upload PDFs and DOCX files, an LLM extracts structured records, and a Pending Approvals staging workflow keeps a human in the loop before anything is committed. Includes multi-record-type AI search and cloud document storage.</div>
+        <div class="proj-tags">
+          <div class="proj-tag">Python</div><div class="proj-tag">FastAPI</div><div class="proj-tag">Streamlit</div>
+          <div class="proj-tag">PostgreSQL</div><div class="proj-tag">Supabase</div><div class="proj-tag">Groq LLM</div>
+          <div class="proj-tag">Document Extraction</div>
+        </div>
+      </div>
+      <div class="proj-outcome">
+        <div class="proj-outcome-label">Status</div>
+        <div class="proj-outcome-val">Five-week pilot approved by management · FPM &amp; ESS departments</div>
       </div>
       <div class="proj-arrow">↗</div>
     </a>
@@ -751,8 +786,10 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
   <div class="section-label">Research &amp; Publications</div>
   <h2 class="section-title">Evidence-based.<br><em>Original insight.</em></h2>
   <p class="section-sub">Research that asks questions nobody else is asking — with data nobody else has structured.</p>
+  <div class="type-legend"><span class="type-tag research" style="margin:0">Research</span> studies, analyses &amp; publications &nbsp;·&nbsp; built systems are tagged <span class="type-tag tech" style="margin:0">Technical Project</span> in <a href="#projects" style="color:var(--teal)">Work</a></div>
   <div class="research-grid fade-up">
     <div class="research-card">
+      <span class="type-tag research">Research</span>
       <div class="rc-type">📊 Quantitative Research · Justice &amp; Security</div>
       <div class="rc-title">Pre-Trial Detention Crisis: A Statistical Analysis of Nigerian Correctional Facilities (2011–Q2 2025)</div>
       <div class="rc-desc">Longitudinal analysis of awaiting-trial detainee rates across all 36 Nigerian states using NCoS data. Regression testing whether the ACJIA 2015 produced measurable reductions in pre-trial detention. Prepared for ASSON-ASA 2026.</div>
@@ -761,6 +798,7 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
       </div>
     </div>
     <div class="research-card">
+      <span class="type-tag research">Research</span>
       <div class="rc-type">🤖 Mixed Methods · AI Perception</div>
       <div class="rc-title">AI &amp; Statistics Students: Career Goals, Paths, and Perceptions at Nigerian Universities</div>
       <div class="rc-desc">Original multi-university survey data, EDA, and hypothesis testing on career satisfaction, AI exposure, and disciplinary identity among the next generation of Nigerian statisticians.</div>
@@ -769,6 +807,7 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
       </div>
     </div>
     <div class="research-card">
+      <span class="type-tag research">Research</span>
       <div class="rc-type">📈 Global Health · Forecasting</div>
       <div class="rc-title">Health Data Time Series Analysis &amp; Forecasting: WHO Data 1999–2023</div>
       <div class="rc-desc">ARIMA-based forecasting of life expectancy, infant mortality, and disease prevalence across 40+ countries from WHO data — forward-looking health intelligence for resource allocation.</div>
@@ -786,28 +825,34 @@ footer{background:var(--ink);padding:3.2rem 5vw;}
   <p class="section-sub">Formal recognition from industry and academic institutions across data science, machine learning, and database engineering.</p>
   <div class="certs-grid fade-up">
     <div class="cert-card">
+      <div class="cert-icon">🚀</div>
+      <div class="cert-issuer">ACE Academy · Founders Training</div>
+      <div class="cert-name">Business Model Training &amp; AI Training for StartUps</div>
+      <div class="cert-year">2026 · Business Model Design · AI for Startups</div>
+    </div>
+    <div class="cert-card">
       <div class="cert-icon">🍃</div>
       <div class="cert-issuer">MongoDB University</div>
-      <div class="cert-name">MongoDB Certified Developer Associate</div>
+      <div class="cert-name">MongoDB Certified</div>
       <div class="cert-year">2026 · Database Design, Aggregation, Indexing</div>
     </div>
     <div class="cert-card">
       <div class="cert-icon">🤖</div>
       <div class="cert-issuer">Coursera · DeepLearning.AI</div>
       <div class="cert-name">MLOps Specialisation</div>
-      <div class="cert-year">2026 · ML Pipelines, Model Monitoring, Deployment</div>
+      <div class="cert-year">In progress · ML Pipelines, Model Monitoring, Deployment</div>
     </div>
     <div class="cert-card">
       <div class="cert-icon">🌍</div>
       <div class="cert-issuer">WorldQuant University</div>
-      <div class="cert-name">Applied Data Science Lab</div>
-      <div class="cert-year">2024 · Computer Vision · Statistical Modelling</div>
+      <div class="cert-name">Data Science Lab &amp; Computer Vision</div>
+      <div class="cert-year">2025 · Computer Vision · Statistical Modelling</div>
     </div>
     <div class="cert-card">
       <div class="cert-icon">📊</div>
       <div class="cert-issuer">Coursera</div>
       <div class="cert-name">Database Management &amp; Design</div>
-      <div class="cert-year">2026 · SQL, Schema Design, Query Optimisation</div>
+      <div class="cert-year">In progress · SQL, Schema Design, Query Optimisation</div>
     </div>
     <div class="cert-card">
       <div class="cert-icon">🏆</div>
